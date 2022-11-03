@@ -61,6 +61,8 @@ body {
     grid-template-areas: "banner hero hero" "banner main main" "footer footer footer";
 
     background-color: #b7b0b0;
+
+    grid-template-columns: 20rem;
 }
 
 .banner {
@@ -70,7 +72,6 @@ body {
     flex-direction: column;
     background-color: $secondary;
     font-family: $headings-font-family;
-    max-width: 20rem;
 
     .country-code {
         position: relative;
