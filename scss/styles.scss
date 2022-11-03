@@ -1,0 +1,129 @@
+
+@import "fonts.scss";
+
+$primary: #83014c;
+$secondary: #330033;
+
+$white: #fff;
+
+$page-bg: #b7b0b0;
+
+
+// Footer and category badges etc
+$gray-200: #ecedee;
+
+// Fonts
+$font-size-base: 12px;
+
+$font-size-xs: .75rem; 		// 12px
+$font-size-sm: 0.875rem; 	// 14px
+$font-size-base: 1.0625rem; // 17px
+$font-size-lg: 1.25rem;		// 20px
+
+$headings-font-family: 'Barlow Semi Condensed', sans-serif;
+$font-family-base: 'Roboto', sans-serif;
+
+// golden ratio margins...
+$margin-xxs: 0.309rem;
+$margin-xs: 0.5rem;
+$margin-sm: 0.809rem;
+$margin-md: 1.309rem;
+$margin-lg: 2.118rem;
+$margin-xl: 3.4270510rem;
+
+// Break points
+$breakpoint-sm: 768px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1224px;
+
+// Resets
+html, 
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    font-family: $font-family-base;
+}
+
+a {
+    color: $primary;
+}
+
+@mixin container {
+    @media (min-width: $breakpoint-sm) {
+        padding: 0 1rem;
+    }
+    @media (min-width: $breakpoint-md) {
+        padding: 0 2rem;
+    }
+    @media (min-width: $breakpoint-lg) {
+        padding: 0 4rem;
+    }
+
+}
+
+// Top-level page elements all extend the responsive container
+.banner,
+.footer,
+.main-navbar,
+.main-content {
+    @include container();
+}
+
+.main-content {
+    flex: 1 0 auto;
+    background-color: $page-bg;
+}
+
+.main-navbar {
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    li {
+        list-style: none;
+        padding: $margin-sm $margin-lg;
+
+        &:hover {
+
+        }
+    }
+
+    background-color: #b7b0b0;
+
+    a {
+        text-decoration: none;
+        color: $white;
+    }
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: $secondary;
+    font-family: $headings-font-family;
+    color: $white;
+}
+
+#welcome {
+    background-color: #fff;
+}
+
+.footer {
+    background-color: $gray-200;
+    flex-shrink: 0;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
