@@ -55,75 +55,75 @@ a {
     color: $primary;
 }
 
-@mixin container {
-    @media (min-width: $breakpoint-sm) {
-        padding: 0 1rem;
-    }
-    @media (min-width: $breakpoint-md) {
-        padding: 0 2rem;
-    }
-    @media (min-width: $breakpoint-lg) {
-        padding: 0 4rem;
-    }
+body {
+    display: grid;
 
-}
-
-// Top-level page elements all extend the responsive container
-.banner,
-.footer,
-.main-navbar,
-.main-content {
-    @include container();
-}
-
-.main-content {
-    flex: 1 0 auto;
-    background-color: $page-bg;
-}
-
-.main-navbar {
-    ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-    }
-
-    li {
-        list-style: none;
-        padding: $margin-sm $margin-lg;
-
-        &:hover {
-
-        }
-    }
+    grid-template-areas: "banner hero hero" "banner main main" "footer footer footer";
 
     background-color: #b7b0b0;
+}
 
-    a {
-        text-decoration: none;
+.banner {
+    grid-area: banner;
+    
+    display: flex;
+    flex-direction: column;
+    background-color: $secondary;
+    font-family: $headings-font-family;
+    max-width: 20rem;
+
+    .country-code {
+        position: relative;
+        float: right;
+        top: 2rem;
+        right: 3rem;
+        font-size: 3rem;
+        color: #b5abe4; // fixme
+    }
+
+    .logo {
+        width: 16rem;
+        padding: 2rem 3rem;
         color: $white;
     }
 }
 
-.banner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 
-    background-color: $secondary;
-    font-family: $headings-font-family;
-    color: $white;
+.nav > ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style: none;
+
+        padding: 1rem 3rem;
+
+        a {
+            color: $white;
+            text-decoration: none;
+        }
+    }
 }
 
-#welcome {
-    background-color: #fff;
+.hero {
+    grid-area: hero;
+
+    background-image: url(../images/wl-test-bg.jpg);
+    background-size: cover;
+    background-position-y: 400px;
 }
 
 .footer {
-    background-color: $gray-200;
-    flex-shrink: 0;
+    grid-area: footer;
 
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    background-color: $gray-200;
+    padding: 2rem 3rem;
+}
+
+.main-content {
+    grid-area: main;
+    padding: 1rem 3rem;
+    background-color: $white;
+    max-width: 768px;
+    justify-self: left;
 }
