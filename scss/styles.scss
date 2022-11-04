@@ -1,12 +1,23 @@
 
 @import "fonts.scss";
 
+// Bootstrap deps
+//@import "../node_modules/bootstrap/scss/functions";
+//@import "../node_modules/bootstrap/scss/variables";
+//@import "../node_modules/bootstrap/scss/maps";
+//@import "../node_modules/bootstrap/scss/mixins";
+//@import "../node_modules/bootstrap/scss/utilities";
+//@import "../node_modules/bootstrap/scss/root";
+//@import "../node_modules/bootstrap/scss/reboot";
+//@import "../node_modules/bootstrap/scss/type";
+//@import "../node_modules/bootstrap/scss/forms";
+
+@import "../node_modules/fontawesome-4.7/scss/font-awesome";
+
 $primary: #83014c;
 $secondary: #330033;
-
 $white: #fff;
-
-$page-bg: #b7b0b0;
+$body-bg: #b7b0b0;
 
 
 // Footer and category badges etc
@@ -62,17 +73,29 @@ body {
 
 a {
     color: $primary;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 body {
+    background-color: $body-bg;
+
     display: grid;
 
-    grid-template-areas: "banner hero hero" "banner main main" "footer footer footer";
+    grid-template-areas: "banner hero hero" "banner main social" "footer footer footer";
 
-    background-color: #b7b0b0;
 
-    grid-template-columns: 20rem;
-    grid-template-rows: 16rem;
+    grid-template-columns: 2fr 4fr 1fr;
+    grid-template-rows: 16rem 1fr min-content;
+
+    @media (max-width: $breakpoint-sm) {
+        grid-template-areas: "banner banner" "main main" "social social" "footer footer";
+        grid-template-columns: unset;
+        grid-template-rows: none;
+    }
 }
 
 h1,
@@ -96,6 +119,11 @@ h3 {
 
 h4 {
     font-size: $h4-font-size;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .banner {
@@ -151,6 +179,30 @@ h4 {
     background-position-y: 400px;
 }
 
+.social {
+    grid-area: social;
+
+    header {
+        display: none;
+    }
+
+    display: grid;
+    grid-gap: 1rem;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: right;
+
+    @media (max-width: $breakpoint-sm) {
+        margin: 0 auto;
+        align-items: unset;
+        justify-content: unset;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem 0;
+    }
+}
+
 .footer {
     grid-area: footer;
 
@@ -160,22 +212,49 @@ h4 {
 
 .main-content {
     grid-area: main;
-    padding: 1rem 3rem;
+    padding: 1rem 3rem 4rem 3rem;
     background-color: $white;
-    max-width: 768px;
-    min-width: 50%;
-    justify-self: left;
+    //max-width: 768px;
+    //min-width: 50%;
+    //justify-self: left;
 }
 
 // About page
 .people {
     .person-list {
+        display: grid;
+        grid-gap: 1rem;
+
         margin: 0;
         padding: 0;
 
         li {
             list-style: none;
         }
+    }
+}
+
+.people .person {
+    display: grid;
+
+    grid-template-areas: "person-image person-name" "person-image person-about";
+    grid-gap: 1rem;
+
+    .person-image {
+        grid-area: person-image;
+
+        border-radius: 50%;
+        width: 10rem;
+        height: auto;
+    }
+
+    .person-name {
+        grid-area: person-name;
+        margin: 0;
+    }
+
+    .person-about {
+        grid-area: person-about;
     }
 }
 
@@ -193,10 +272,33 @@ h4 {
             display: block;
         }
 
+        label {
+            margin-bottom: $margin-xs;
+        }
+
         input,
         textarea {
+            width: 100%;
             border-radius: 0;
             border: 1px solid $border-gray;
+            padding: $margin-xxs $margin-xs;
+        }
+    }
+
+    button {
+        display: inline-block;
+        font-weight: 400;
+        white-space: nowrap;
+        padding: $margin-xs $margin-xs;
+        border-radius: 0;
+        border: 1px solid transparent;
+        cursor: pointer;
+        background-color: $primary;
+        color: $white;
+        line-height: 1.5;
+
+        &:hover {
+            background-color: darken($primary, 5%);
         }
     }
 }

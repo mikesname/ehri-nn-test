@@ -50,9 +50,19 @@
                 </ul>
             </nav>
         </header>
-        <header class="hero">
+        <header class="hero"></header>
+        <aside class="social">
+            <header>Follow</header>
+            <a class="follow-button" href="https://facebook.com/EHRIproject" title="Follow EHRI on Facebook">
+                <i class="fa fa-fw fa-2x fa-facebook" aria-hidden="true"></i>
+                <span class="sr-only">Facebook</span>
+            </a>
 
-        </header>
+            <a class="follow-button" href="https://twitter.com/EHRIproject" title="Follow EHRI on Twitter">
+                <i class="fa fa-fw fa-2x fa-twitter" aria-hidden="true"></i>
+                <span class="sr-only">Twitter</span>
+            </a>
+        </aside>
         <main class="main-content">
             <article id="contact">
                 <header>
@@ -60,7 +70,7 @@
                 </header>
                 <p>Please contact us by using this form:</p>
 
-                <form class="form contact-form">
+                <form class="form contact-form" method="post">
                     <div class="form-group">
                         <label for="form-name">Name *</label>
                         <input type="text" name="name" id="form-name" required/>
@@ -74,9 +84,10 @@
                         <input type="text" name="subject" id="form-subject" required/>
                     </div>
                     <div class="form-group">
-                        <label for="form-name">Leave us a message... *</label>
-                        <textarea rows="4" name="message" id="form-message" required></textarea>
+                        <label for="form-message">Leave us a message... *</label>
+                        <textarea rows="8" name="message" id="form-message" required></textarea>
                     </div>
+                    <button type="submit">Submit</button>
                 </form>
             </article>
         </main>
