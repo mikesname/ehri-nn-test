@@ -96,6 +96,10 @@ body {
         grid-template-columns: unset;
         grid-template-rows: none;
     }
+
+    @media (min-width: $breakpoint-lg) {
+        grid-template-columns: 20rem $breakpoint-sm auto;
+    }
 }
 
 h1,
